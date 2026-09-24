@@ -12,3 +12,27 @@ Compare Job List:
    Before you ran seed, take screenshot/list of all jobs.
    After seed, take new list.
    Compare: Any job missing? Any job renamed? 
+
+VT-12157 INT Task 2 - INT is Pre-Prod: Test Each Functionality
+   A. Test all 8 Pipeline Types E2E - run each one manually in INT:
+      Tosca DEX
+      SoapUI
+      Karate
+      JUnit
+      Sonar
+      Comparison
+      PR trigger
+     onDemandB. 
+   B. Validate all 8 Integrations - does it connect?
+      GHE - can pull code?
+      SonarQube - scan working?
+      Herold - test results going to dashboard?
+      Tosca DEX - DEX token working in INT?
+      Artifactory - can download/upload artifacts?
+      Jira - can update tickets?
+      Email+Teams - notifications going?
+      K8s - can access INT cluster?
+
+  SoapUI agent labels: In DEV it's one label, in INT it has 3 variants: 
+      -smoke, -acceptance, -integration. Check all 
+  Performance: Compare new time vs old time before your refactor. If new code is >10% slower, it's a regression -> FAIL.
