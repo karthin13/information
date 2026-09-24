@@ -1,0 +1,77 @@
+VT 12150 - DEV Task 1 - Decision Making: Branching Strategy
+Align branches: Currently appl-abs-testing-config is on master, other 3 repos on main. You need to make all 4 repos use main.Rename master to main for that 1 repo.
+Fix hardcoded branch: In Jenkinsfile_fcp branch is hardcoded as master. Change it to main or better make it parametric ${env.BRANCH_NAME}
+Finalize strategy as per description:
+DEV = showcase branch
+INT = develop branch
+PROD = main branch
+Option A:
+Parallel run during DEV testing
+Option B
+New Jenkins instance after DEV testing
+Better Option
+new Jenkins instance after DEV testing for better isolation. And we should standardize all repos to main and remove hardcoded master from Jenkinsfile   
+-------------------------------------------------------------------------------------------------------------------------
+ 
+VT 12151 DEV Task 2 - Jenkins Setup to Test New Codebase
+1)Spin up new Jenkins: Create a new Jenkins instance / folder, point it to the refactored codebase (the main branch you fixed in Task 2).Run Seed Job: Run Jenkinsfile_fcp (seed job). This will auto-create all pipeline jobs. Check if all jobs are created without error.
+3)Branch test: Create a new test branch from main (e.g., feature/jenkins-test) in Jenkins codebase, push a small change, and check if Jenkins detects it and triggers correctly. This confirms branch alignment.
+Steps in order: 
+Jenkins instance up -> Configure Git repo URL -> Set branch to mainRun 
+seed job -> Verify job list
+Create test-Jenkins-alignment branch -> Commit -> Check webhook / Jenkins scan                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          -------------------------------------------------------------------------------------------------------------------------                                                                                           
+ 
+VT-12152  DEV Task 3 - Check and Align with B&D Folder Pattern
+Currently job files are split in 2 places:
+     jenkins/job-description/ -> has only 2 files
+     job-description/ -> has 40 files
+This is not standard. Need to follow B&D pattern (Build & Deploy standard).
+Solutions:
+Understand B&D folder structure - ask lead or check other standard project how they keep it. Usually all should be in one place: jenkins/job-description/.
+Move 40 files from root job-description/ into jenkins/job-description/. Now you will have 42 files in one folder.
+Delete empty job-description/ folder from root.
+Align naming: Check all 42 job files naming. Make it consistent.
+Example: appl-abs-build-job.groovy vs APPL_ABS_Build. Use kebab-case or whatever team standard is. Also update references in Jenkinsfile_fcp if path changed.(kebab-case - all letter are in small letter and word separated with hyphens)
+Test: Run seed job again to confirm after moving, all jobs still get created.
+-------------------------------------------------------------------------------------------------------------------------
+VT-12153 DEV Task 4 - Explore Repetitive tasks for Global Shared Libraries
+This is refactoring to avoid duplicate code:
+We have ∼40 *.groovy files in job-description/. Most of them have same code copied - like checkout, build, deploy, notification logic repeated 40 times.
+solution:
+Identify Duplication: Open 5-6 groovy files and compare. You will see same blocks repeating. Example: git checkout, mvn build, docker push, slack notification.
+Design Shared Library: Create common functions in Global Shared Library repo.
+Example:   vars/buildApp.groovy.  vars/deployApp.groovy.  vars/notify. Groovy
+Replace duplication: In those 40 files, replace 30-40 lines of duplicated code with 1 line: buildApp() or deployApp(env)
+-------------------------------------------------------------------------------------------------------------------------
+VT-12154 DEV Task 5 - Create Groovy for Testing Techniques & Integrate Shared Libraries
+For Testing tools, we need to create common Groovy functions.
+Create Shared Library method for each testing tool
+  Example: runUnitTest(), runIntegrationTest(), runRegressionTest()
+   This groovy will be stored in vars/ folder of shared library.
+Add logic for all test scenarios mentioned: 
+       PR trigger - job should run when PR is created
+       cron - scheduled run
+       manual - user clicks Build Now
+       failure / retry / rollback - if test fails, what to do?
+       param validation - check input params are valid
+       date range filter / release level filter - filter tests based on date or release
+       seed rerun - re-run seed job
+Test it: Write a small test Jenkinsfile that calls your new shared library method and verify all scenarios work.
+-------------------------------------------------------------------------------------------------------------------------
+VT-12155 DEV Task 6 - Check E2E Connection, Monitoring and Mails
+   1. Full Flow Test: Trigger -> Execution -> Result -> Notification
+      Trigger a job manually, see if it executes, result shows, and mail comes.
+   2. Herold Check: Herold is your test result dashboard.
+                 Check config config_FCP_dev.herold.serverUrl - is URL correct?
+                  Run a pipeline and see if JUnit XML results reach Herold.
+   3. Mail / Teams Check: 
+           Check config config_FCP_dev.job.mailBox - email list correct?
+           After job run, check if email / Teams notification is sent to that mailbox.
+    4. Failure Test:
+           Deliberately fail one pipeline (e.g., add error("fail test") in groovy).
+           Confirm if failure alert mail / Teams message fires correctly.
+     5. SonarQube Check:
+             Before, Sonar was scanning only DSL wrapper, not actual groovy logic.
+             Now verify SonarQube scans the actual .groovy files we have created in previous task
+ 
+-------------------------------------------------------------------------------------------------------------------------
