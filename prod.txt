@@ -27,3 +27,11 @@ VT-12160. PROD Task 2 - Checking E2E Connection
            Paris (ew3) is Disaster Recovery site.
            Currently commented out in activeUrls. You need to either confirm it is NOT needed now, or formally defer it (create a follow-up ticket / get approval to keep it commented).
 
+VT-12161 PROD Task 3 - Observe for 1 Week (Hypercare) 
+     If any pipeline fails in PROD,  must fix immediately. No delay.
+    Track daily:
+      Build success rate - e.g., 98% pass, 2% fail?
+      Failure modes - Why it failed? Is it DEX down? K8s issue? Code issue?
+      PROD config differences - check config_FCP_prod - is anything different vs DEV/INT? Document it.
+    Sign-off report: After 1 week , we can provide the report , PROD is stable
+    
