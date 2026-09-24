@@ -1,0 +1,11 @@
+VT-12159 PROD Task 1 - Connection and Integration with Tosca DEX
+  PROD has DEX gateways: 
+    config_FCP_prod.tosca.dex.gateway1/2.url - you need to validate connection.
+    Need to check the following 
+      1.DEX Token: Check if Jenkins can get DEX token from PROD URL. If token fails, nothing will work.
+      2.Execution: Check if test execution can be enqueued - means you send request to DEX to run Tosca tests.
+      3.Status Polling: After enqueue, Jenkins should keep polling status - running / passed / failed. Check polling logic works in PROD.
+      4.ToscaFeeder Downtime Guard: In file applabs_ToscaFeeder_release.groovy there is a guard logic. If ToscaFeeder is down, job should not fail blindly - it should handle downtime. Test this guard triggers correctly in PROD.
+      5.JSL Check: Confirm agile_JSL@main loads correct Tosca methods from JSLTosca.groovy. 
+            Means shared library on main branch has correct code.
+   
