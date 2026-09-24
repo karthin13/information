@@ -36,3 +36,22 @@ VT-12157 INT Task 2 - INT is Pre-Prod: Test Each Functionality
   SoapUI agent labels: In DEV it's one label, in INT it has 3 variants: 
       -smoke, -acceptance, -integration. Check all 
   Performance: Compare new time vs old time before your refactor. If new code is >10% slower, it's a regression -> FAIL.
+
+VT-12158 INT Task 3 - Check E2E Connection, Monitoring and Mails
+ 1. Herold Dashboard Check (INT):
+     Herold = dashboard where all test results show.
+         Run all pipelines in INT.
+         Check: Does INT Herold dashboard show all runs? If DEV Herold URL was different, INT Herold must have its own URL from                       config_FCP_test. Results should reflect.
+2. Failure Alert Check:
+    Deliberately fail a pipeline in INT. (Add error("test fail"))
+    Check if mail alert reaches config_FCP_test.job.mailBox
+    This mailbox is INT mailbox - different from DEV.
+3. Zephyr / Jira Reporting:
+    File: applabs_Jira_release.groovy - this file sends test results to Jira/Zephyr.
+    Validate if after pipeline run, results are correctly reported in Zephyr/Jira.
+4. Performance Benchmark:
+    Measure 2 timings in INT:
+      How long seed job takes - before refactor vs after refactor
+      How long key pipelines take - before vs after
+    If new time is much higher, it's a problem.
+
