@@ -8,4 +8,22 @@ VT-12159 PROD Task 1 - Connection and Integration with Tosca DEX
       4.ToscaFeeder Downtime Guard: In file applabs_ToscaFeeder_release.groovy there is a guard logic. If ToscaFeeder is down, job should not fail blindly - it should handle downtime. Test this guard triggers correctly in PROD.
       5.JSL Check: Confirm agile_JSL@main loads correct Tosca methods from JSLTosca.groovy. 
             Means shared library on main branch has correct code.
-   
+
+VT-12160. PROD Task 2 - Checking E2E Connection 
+     1. Run Seed Job in PROD:Run Jenkinsfile_fcp in PROD, but only in low-traffic window (e.g., night) 
+          - because PROD is live. Don't break PROD during day.
+     2. Smoke Test 7 Scenarios - all must pass:
+           seed - seed job creates all jobs?
+           manual Tosca - manually trigger Tosca test
+           first cron - scheduled run works?
+           notification - mail/Teams comes?
+           K8s permissions - can access K8s?  
+           PR trigger - PR triggers job?
+           rollback - if fails, rollback works?
+     3. K8s Namespace Check:
+        Namespace is adp-tools-appl-abs-prod-team
+        Validate secret operations - can Jenkins read secrets from this namespace? Like passwords, tokens.
+     4. Paris DR Config:
+           Paris (ew3) is Disaster Recovery site.
+           Currently commented out in activeUrls. You need to either confirm it is NOT needed now, or formally defer it (create a follow-up ticket / get approval to keep it commented).
+
