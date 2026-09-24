@@ -1,0 +1,14 @@
+VT-12156 - INT Task 1 - Decision Making and Migration to INT 
+
+Go / No-Go Decision:
+  Check DEV gate - Did all Groovy tests pass in DEV? If YES = Go, If NO = No-Go, fix DEV first.
+Merge Code:
+   The refactored code is in feature branch now. We need to merge it to develop branch.
+   Then develop branch = INT branch.
+Run Seed Job in INT:
+   In the INT Jenkins: jenkins-appl-abs-test-team.devops-services.ec1
+   Run seed job there. Seed job will create/update all Jenkins jobs in INT.
+Compare Job List:
+   Before you ran seed, take screenshot/list of all jobs.
+   After seed, take new list.
+   Compare: Any job missing? Any job renamed? 
