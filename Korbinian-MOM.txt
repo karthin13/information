@@ -37,3 +37,22 @@ Thanks again Korbinian for the guidance.
 Best regards,
 [Your Name]
 Testing Pipeline Team
+
+
+h3. Update - 14 May - Call with Korbinian (BuD PO)
+
+Had a call with Korbinian Weise to discuss branching strategy & Jenkins refactoring alignment with BuD team.
+
+*Key Outcomes:*
+* Finalized: DEV=showcase, INT=develop, PROD=main.
+* Decision: Go with *new Jenkins instance for DEV testing* to avoid impacting existing jobs (as suggested by Korbinian).
+* Reference repos shared by Korbinian for master->main fix: 
+    - ABS-BuD jenkins-pipelines
+    - ABS-BuD jenkins-library
+* GIAM access discussion - searching BuD groups shows no results, will check correct group name.
+
+*Next Step:*
+Pending approval from @Mate for new Jenkins instance provisioning.
+Once approved, will move to Task 2 - Jenkins Setup to Test New Codebase.
+
+cc: @Korbinian Weise @Mate @Shweta
