@@ -1,0 +1,39 @@
+Here is your MOM mail - ready to send:
+
+---
+
+*Subject:* MOM | Call with Korbinian - Branching Strategy & Jenkins Refactoring Decision
+
+*To:* Korbinian Weise
+*Cc:* Mate, Shweta, Aditya
+
+Hi All,
+
+Thank you Korbinian for your time today. Please find below the MOM from our call:
+
+*Date:* 14 May 2026
+*Attendees:* Korbinian, [Your Name], [Add others if any]
+*Topic:* Testing Pipeline - Branching Strategy & Jenkins Refactoring Plan alignment with BuD team
+
+*Key Discussion Points:*
+
+1.  Discussed current branching structure for Testing Pipeline - DEV=showcase, INT=develop, PROD=main. And the issue of `appl-abs-testing-config` still on `master` vs other 3 repos on `main`.
+2.  Discussed Jenkins Refactoring - Decision on new Jenkins instance vs parallel run.
+3.  Korbinian suggested to go ahead with *new Jenkins instance for DEV phase*, so that it won't affect the existing Jenkins setup.
+4.  Korbinian shared GitHub URLs of BuD team for reference:
+    - ABS-BuD - `jenkins-pipelines` 
+    - ABS-BuD - `jenkins-library`
+    - To refer repo structure and master->main migration fix.
+
+*Action Items / Next Steps:*
+# | Action | Owner | Timeline
+1 | Get approval from Mate for provisioning new Jenkins instance for DEV | [Your Name] / Mate | This week
+2 | Review BuD repo structure (jenkins-pipelines & jenkins-library) shared by Korbinian and compare with Testing Pipeline repos | [Your Name] | Week 1
+3 | Update `Jenkinsfile_fcp` and fix branching `master` -> `main` in showcase branch | [Your Name] | After approval
+Please let me know if I missed anything.
+
+Thanks again Korbinian for the guidance.
+
+Best regards,
+[Your Name]
+Testing Pipeline Team
