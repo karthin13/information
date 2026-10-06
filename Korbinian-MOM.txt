@@ -56,3 +56,14 @@ Pending approval from @Mate for new Jenkins instance provisioning.
 Once approved, will move to Task 2 - Jenkins Setup to Test New Codebase.
 
 cc: @Korbinian Weise @Mate @Shweta
+
+
+
+----------------6th oct 
+Subject: Follow-up: DEV Jenkins Instance Approval
+Hi Mate,
+Just following up on my previous email regarding the new Jenkins instance for the DEV environment.
+Could you please let me know when you would be available for a quick discussion? I’m currently blocked on this task and unable to proceed until we have the required approval/discussion.
+Please let me know a convenient time for you.
+Thanks,
+Karthi
