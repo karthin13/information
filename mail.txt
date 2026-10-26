@@ -1,0 +1,4 @@
+Hi Shweta/Aditya,
+I got an approval request for Jira CCMF-16066, Which is asking for WBS element/Cost center and Debtor details.
+ 
+Do you have any idea where I can find these details.
