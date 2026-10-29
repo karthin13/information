@@ -12,4 +12,9 @@ Could you please help me connect with the financial SPOC or guide me on who that
 
 
 Update on CCMF-16066:Received a reply from the CMF team. As per their update, the WBS element and debtor details need to be provided by the financial SPOC.I have informed Mate (Allianz Technology) regarding this and requested the details. We are currently waiting for the WBS element and debtor information from the financial SPOC.Once received from Mate, I will update the same in the CMF ticket and move it to Approved status.
+
+
+
+
+Update on CCMF-16066:The CMF team has also created a Jira ticket for this request for their tracking. Reference ticket: [Please add CMF Jira No. here - e.g., CMF-XXXXX].As per the update from the CMF team, the WBS element and debtor details will be issued by the financial SPOC. I have already informed Mate (Allianz Technology) regarding this and requested the details.We are currently awaiting the WBS element and debtor details from the financial SPOC. Once I receive the details from Mate, I will update the same in both tickets and move CCMF-16066 to Approved status.
  
