@@ -9,4 +9,7 @@ Hi Aditya,
 I checked with Mate, but he doesn't have visibility on this either. Following up with the CMF team, they indicated that the WBS element and debtor details will be issued by the financial SPOC."
  
 Could you please help me connect with the financial SPOC or guide me on who that would be?
+
+
+Update on CCMF-16066:Received a reply from the CMF team. As per their update, the WBS element and debtor details need to be provided by the financial SPOC.I have informed Mate (Allianz Technology) regarding this and requested the details. We are currently waiting for the WBS element and debtor information from the financial SPOC.Once received from Mate, I will update the same in the CMF ticket and move it to Approved status.
  
